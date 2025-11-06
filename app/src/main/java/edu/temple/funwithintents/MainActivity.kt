@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
             val text = editText.text.toString()
             if (text.isNotBlank()) {
-                val smsUri = Uri.parse("smsto:")
+                val smsUri = "smsto:".toUri()
                 val smsIntent = Intent(Intent.ACTION_SENDTO, smsUri).apply {
                     putExtra("sms_body", text)
                 }
